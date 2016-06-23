@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" action="{% url 'solicitudes:update' %}">
+    {% csrf_token %}
+    <table id='tsolicitudes'>
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Folio</td>
+                <td>Solicitud</td>
+                <td>Comp. SAT</td>
+                <td>Identif</td>
+                <td>CURP</td>
+                <td>Comp. Domic.</td>
+                <td>Carta aut.</td>
+                <td>cotizacion</td>
+                <td>Poder</td>
+                <td>Factura</td>
+                <td>Carta p. terc.</td>
+                <td>Rep. Verfif.</td>
+                <td>Carta e. recep.</td>
+                <td>Certif. Parc.</td>
+                <td>Factura del tractor</td>
+                <td>Fotografias</td>
+                <td>Observaciones</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{ form.cader }}
+            {{ form.id }}
+            <tr>
+                <td>{{ form.nombre }}</a></td>
+                <td>{{ form.folio }}</td>
+                <td>{{ form.solicitud }}</td>
+                <td>{{ form.comprobante_sat }}</td>
+                <td>{{ form.identif }}</td>
+                <td>{{ form.comprobante_curp }}</td>
+                <td>{{ form.comp_domic }}</td>
+                <td>{{ form.carta_autoriz }}</td>
+                <td>{{ form.cotizacion }}</td>
+                <td>{{ form.poder_en_su_caso }}</td>
+                <td>{{ form.fact }}</td>
+                <td>{{ form.carta_pago_terceros }}</td>
+                <td>{{ form.reporte_verif }}</td>
+                <td>{{ form.carta_entrega_recepcion }}</td>
+                <td>{{ form.certificado_parcelario }}</td>
+                <td>{{ form.factura_del_tractor }}</td>
+                <td>{{ form.fotogarfias }}</td>
+                <td>{{ form.oservaciones }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="SUBMIT" value="Guardar"/>
+</form>
+{% endblock %}

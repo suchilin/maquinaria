@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.perfil %}
+<a href="{% url 'solicitudes:updateperfil' %}">Editar perfil</a>
+    <h1>ESCRITURA PUBLICA DE LA EMPRESA</h1>
+    <table>
+        <tr>
+            <td>
+                Numero de la escritura
+            </td>
+            <td>
+                {{ form.escritura.value }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Fecha de la escritura
+            </td>
+            <td>{{ form.escritura_fecha.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Notario que firma la escritura
+            </td>
+            <td>{{ form.escritura_notario.value }}</td>
+            <td>{{ form.escritura_notario.errors.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Numero del notario que firma la escritura
+            </td>
+            <td>{{ form.escritura_notario_numero.value.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Ciudad donde se firmo la escritura
+            </td>
+            <td>{{ form.escritura_notario_ciudad.value }}</td>
+        </tr>
+    </table>
+    <h1>APODERADO LEGAL DE LA EMPRESA</h1>
+    <table>
+        <tr>
+            <td>
+                Nombre del apoderado legal
+            </td>
+            <td>{{ form.apoderado_legal.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Numero del poder
+            </td>
+            <td>{{ form.poder.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Fecha del poder
+            </td>
+            <td>{{ form.poder_fecha.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Ciudad donde se firma el poder
+            </td>
+            <td>{{ form.poder_ciudad.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Nombre del notario que firma el poder
+            </td>
+            <td>{{ form.poder_notario.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Numero del notario que firma el poder
+            </td>
+            <td>{{ form.poder_notario_numero.value }}</td>
+        </tr>
+        <tr>
+            <td>
+                Domicilio de la empresa
+            </td>
+            <td>{{ form.apoderado_legal_domicilio.value }}</td>
+        </tr>
+    </table>
+    <h1>CUENTA BANCARIA DE LA EMPRESA</h1>
+    <table>
+        <tr>
+            <td>
+                Nombre del cuentahabiente
+            </td>
+            <td>
+                {{ form.nombre_cuentahabiente.value }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nombre del banco
+            </td>
+            <td>
+                {{ form.nombre_banco.value }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Clave del banco
+            </td>
+            <td>
+                {{ form.clave_banco.value }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Clabe del interbancaria
+            </td>
+            <td>
+                {{ form.clabe_interbancaria.value }}
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+{% else %}
+<form action='{% url 'solicitudes:perfil' %}' method='post'>
+    {% csrf_token %}
+    {% for field in form %}
+        {% if field.errors %}
+            {{ field.name }}
+        {% endif %}
+    {% endfor %}
+    <h1>ESCRITURA PUBLICA DE LA EMPRESA</h1>
+    <table>
+        <tr>
+            <td>
+                Numero de la escritura
+            </td>
+            <td>
+                {{ form.escritura }}
+            </td>
+            <td>
+                {{ form.escritura.errors }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Fecha de la escritura
+            </td>
+            <td>{{ form.escritura_fecha }}</td>
+            <td>{{ form.escritura_fecha.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Notario que firma la escritura
+            </td>
+            <td>{{ form.escritura_notario }}</td>
+            <td>{{ form.escritura_notario.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Numero del notario que firma la escritura
+            </td>
+            <td>{{ form.escritura_notario_numero }}</td>
+            <td>{{ form.escritura_notario_numero.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Ciudad donde se firmo la escritura
+            </td>
+            <td>{{ form.escritura_notario_ciudad }}</td>
+            <td>{{ form.escritura_notario_ciudad.errors }}</td>
+        </tr>
+    </table>
+    <h1>APODERADO LEGAL DE LA EMPRESA</h1>
+    <table>
+        <tr>
+            <td>
+                Nombre del apoderado legal
+            </td>
+            <td>{{ form.apoderado_legal }}</td>
+            <td>{{ form.apoderado_legal.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Numero del poder
+            </td>
+            <td>{{ form.poder }}</td>
+            <td>{{ form.poder.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Fecha del poder
+            </td>
+            <td>{{ form.poder_fecha }}</td>
+            <td>{{ form.poder_fecha.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Ciudad donde se firma el poder
+            </td>
+            <td>{{ form.poder_ciudad }}</td>
+            <td>{{ form.poder_ciudad.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Nombre del notario que firma el poder
+            </td>
+            <td>{{ form.poder_notario }}</td>
+            <td>{{ form.poder_notario.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Numero del notario que firma el poder
+            </td>
+            <td>{{ form.poder_notario_numero }}</td>
+            <td>{{ form.poder_notario_numero.errors }}</td>
+        </tr>
+        <tr>
+            <td>
+                Domicilio de la empresa
+            </td>
+            <td>{{ form.apoderado_legal_domicilio }}</td>
+            <td>{{ form.apoderado_legal_domicilio.errors }}</td>
+        </tr>
+    </table>
+    <h1>CUENTA BANCARIA DE LA EMPRESA</h1>
+    <table>
+        <tr>
+            <td>
+                Nombre del cuentahabiente
+            </td>
+            <td>
+                {{ form.nombre_cuentahabiente }}
+            </td>
+            <td>
+                {{ form.nombre_cuentahabiente.errors }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nombre del banco
+            </td>
+            <td>
+                {{ form.nombre_banco }}
+            </td>
+            <td>
+                {{ form.nombre_banco.errors }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Clave del banco
+            </td>
+            <td>
+                {{ form.clave_banco }}
+            </td>
+            <td>
+                {{ form.clave_banco.errors }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Clabe del interbancaria
+            </td>
+            <td>
+                {{ form.clabe_interbancaria }}
+            </td>
+            <td>
+                {{ form.clabe_interbancaria.errors }}
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="guardar"/>
+</form>
+{% endif %}
+{% endblock %}

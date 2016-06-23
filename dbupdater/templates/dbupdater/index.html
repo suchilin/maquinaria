@@ -1,0 +1,29 @@
+<h1>
+    Actualizar Base de Datos
+</h1>
+subir archivo excel:
+<form method="POST" action="{% url 'dbupdater:index' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>{{ form.ExcelFile }}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Subil"/></td>
+        </tr>
+    </table>
+</form>
+
+{% for field in form %}
+{% if field.errors %}
+{{ field.label }}
+{{ field.errors }}
+{% endif %}
+{% endfor %}
+
+Num. Rows: {{ rows }}
+<ul>
+    {% for folio in folios %}
+    <li>{{ folio }}</li>
+    {% endfor %}
+</ul>

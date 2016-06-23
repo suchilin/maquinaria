@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+{% load staticfiles %}
+
+<h1>Solicitudes</h1>
+Buscar por: 
+<form method="GET" action="{% url 'solicitudes:index' %}">
+    Identificador: <input type="TEXT" name="identificador"/>
+    Nombre: <input type="TEXT" name="nombre"/>
+    <input type="SUBMIT" value="Buscar"/>
+</form>
+<form method="post" action="{% url 'solicitudes:index' %}">
+{% csrf_token %}
+    <input type="SUBMIT" value="Guardar"/>
+    {{ formset.management_form }}
+    <table id='tsolicitudes'>
+        <thead>
+            <tr>
+                <td></td>
+                <td>Nombre</td>
+                <td>Folio</td>
+                <td>Factura</td>
+                <td>Carta p. terc.</td>
+                <td>Rep. Verfif.</td>
+                <td>Carta e. recep.</td>
+                <!--<td>Observaciones</td>-->
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in formset %}
+            {% if not forloop.last %}
+            <tr>
+                {{ form.id }}
+                {{ form.nombre }}
+                {{ form.apoyo_federal_dictaminado }}
+                {{ form.identificador }}
+                {{ form.folio }}
+                {{ form.beneficio }}
+                <td>{{ form.identificador.value|floatformat:"0" }}</td>
+                <td><a href="/idetec/solicitudes/unasolicitud/{{ form.id.value }}">{{ form.nombre.value }}</a></td>
+                {% if form.folio.value in lista %}
+                <td class="red-background-1">{{ form.folio.value }}</td>
+                {% else %}
+                <td>{{ form.folio.value }}</td>
+                {% endif %}
+                <td>{{ form.fact }}</td>
+                <td>{{ form.carta_pago_terceros }}<a href="{% url 'solicitudes:ccdd' form.id.value %}">CCdD</a></td>
+                <td>{{ form.reporte_verif }}</td>
+                <td>{{ form.carta_entrega_recepcion }}</td>
+                <!--<td>{{ form.oservaciones }}</td>-->
+                <td></td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+
+
+<div class="pagination">
+        <span class="step-links">
+            {% if objects.has_previous %}
+                <a href="?page={{ objects.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            <span class="current">
+                Pagina {{ objects.number }} de {{ objects.paginator.num_pages }}
+            </span>
+
+            {% if objects.has_next %}
+                <a href="?page={{ objects.next_page_number }}">Siguiente</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endblock %}

@@ -1,0 +1,40 @@
+@media all {
+        .page-break { display: none; }
+    }
+
+@media print{
+    #header{
+        display:none !important;
+    }
+
+    .page-break { display: block; page-break-before: always; }
+}
+
+.vertical-text {
+    transform: rotate(270deg);
+}
+
+.green-background{
+    background-color: green;
+}
+
+
+.red-background{
+    background-color: red;
+}
+
+.red-background-1{
+    background-color: red;
+    color: #fff;
+}
+
+.mtexto{
+    border-style: none;
+}
+
+#ccdd{
+    font-family: Arial;
+    font-size: 13px;
+}
+
+

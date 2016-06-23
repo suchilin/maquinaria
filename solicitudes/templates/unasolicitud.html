@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Solicitud</h1>
+<form method="POST" action="{% url 'solicitudes:unasolicitud' %}">
+    <table>
+    {% for field in form %}
+    {% if not forloop.first %}
+    <tr>
+        <td>{{ field.label_tag }}</td>
+        {% if field.value == True %}
+            <td>Si</td>
+        {% elif field.value == False %}
+            <td>No</td>
+        {% else %}
+            <td>{{ field.value }}</td>
+        {% endif %}
+    </tr>
+        {% endif %}
+    {% endfor %}
+    </table>
+</form>
+{% endblock %}

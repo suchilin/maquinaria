@@ -1,0 +1,9 @@
+from django.contrib import admin
+from .models import Solicitudes
+
+class SolicitudesAdmin(admin.ModelAdmin):
+    search_fields = ('nombre', )
+    list_display = ('nombre', 'solicitud', 'comprobante_sat', 'identif', 'comprobante_curp', 'comp_domic', 'carta_autoriz', 'cotizacion', 'poder_en_su_caso', 'fact', 'carta_pago_terceros', 'reporte_verif', 'carta_entrega_recepcion', 'certificado_parcelario', 'factura_del_tractor', 'fotogarfias')
+    list_editable = ('nombre', 'solicitud', 'comprobante_sat', 'identif', 'comprobante_curp', 'comp_domic', 'carta_autoriz', 'cotizacion', 'poder_en_su_caso', 'fact', 'carta_pago_terceros', 'reporte_verif', 'carta_entrega_recepcion', 'certificado_parcelario', 'factura_del_tractor', 'fotogarfias')
+
+admin.site.register(Solicitudes, SolicitudesAdmin)
