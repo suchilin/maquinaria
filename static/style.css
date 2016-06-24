@@ -37,4 +37,7 @@
     font-size: 13px;
 }
 
-
+#cer_enc{
+    width:100%;
+     border:1px solid black;
+}

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'solicitudes',
     'registration',
     'dbupdater',
+    'mathfilters',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,3 +123,4 @@ LOGIN_URL = '/idetec/accounts/login'
 TEMPLATE_DIRS = (
             os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
             )
+USE_THOUSAND_SEPARATOR = True

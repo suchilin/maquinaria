@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^add/$', add, name='add' ),
     url(r'^update/$', update, name='update' ),
     url(r'^ccdd/(?P<solicitud_id>\d+)/$', ccdd, name='ccdd' ),
+    url(r'^centr/(?P<solicitud_id>\d+)/$', centr, name='centr' ),
 
 )

@@ -5,6 +5,7 @@ from .forms import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from datetime import date
 
 
 
@@ -93,6 +94,15 @@ def ccdd(request, solicitud_id=None):
     solicitud = Solicitudes.objects.get(pk=solicitud_id)
     return render(request, 'ccdd.html', {'solicitud':solicitud})
 
+
+@login_required
+def centr(request, solicitud_id=None):
+    solicitud = Solicitudes.objects.get(pk=solicitud_id)
+    mes_ = {1:"Enero", 2:"Febrero", 3:"Marzo", 4:"Abril", 5:"Mayo", 6:"Junio", 7:"Julio", 8:"Agosto", 9:"Septiembre", 10:"Octubre", 11:"Noviembre", 12:"Diciembre"}
+    fecha = date.today()
+    dia = fecha.day
+    mes = mes_[fecha.month]
+    return render(request, 'centr.html', {'solicitud':solicitud, 'dia':dia, 'mes':mes})
 
 @login_required
 def update(request):

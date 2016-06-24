@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load mathfilters %}
+{% block content %}
+<table id="cer_enc">
+    <tr>
+        <td>
+            <p align="center"><b>PROGRAMA DE FOMENTO A LA GRICULTURA</b></p>
+            <p align="center"><b>Componente: Modernización de Maquinaria y Equipo</b></p>
+            <p align="center"><b>Concepto de Apoyo: {{ solicitud.concepto }}</b></p>
+            <p align="center"><b>ACTA ENTREGA-RECEPCIÓN</b></p>
+        </td>
+        <td>
+            <img src="/static/idetec/sagarpa.png">
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <table width="80%">
+                <tr>
+                    <td><b>Dia</b></td>
+                    <td><b>Mes</b></td>
+                    <td><b>Año</b></td>
+                </tr>
+                <tr>
+                    <td><b>{{ dia }}</b></td>
+                    <td><b>{{ mes }}</b></td>
+                    <td><b>2016</b></td>
+                </tr>
+            </table>
+        </td>
+        <td align="center">
+            <table>
+                <tr><td><b>Estado</b></td></tr>
+                <tr><td><b>Durango</b></td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<p align="justify">MVZ Tomas Fernando Castillo Hern</br>
+Delegado de la SAGARPA en Durango</br>
+P R E S E N T E</p>
+
+<p align="justify">El que suscribe C. <b>{{ solicitud.nombre }}</b> en mi carácter de beneficiario del Componente de Modernización de Maquinaria y Equipo, del Programa de Fomento a la Agricultura 2016, con folio de solicitud No. <b>{{ solicitud.folio }}</b>, mediante la presente Carta, hago constar, que el día <b>{{ dia }}</b> del mes de <b>{{ mes }}</b> del <b>2016</b> recibí a mi entera satisfacción de parte de <b>{{ solicitud.proveedor }}</b>, con RFC <b>{{ solicitud.rfc_proovedor }}</b> el (la) <b>{{ solicitud.concepto }}</b>, autorizado por la SAGARPA, con las características que a continuación se describen:</p>
+<p align="center"><b>APOYO ENTREGADO</b></p>
+<center>
+    <table width="80%">
+        <tr>
+            <td>
+                <b>Subconcepto de apoyo</b>    
+            </td>
+            <td>
+                {{ solicitud.beneficio }}
+            </td>
+            <td>
+                <b>Factura</b>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Tipo de apoyo</b>
+            </td>
+            <td>
+                {{ solicitud.concepto }}
+            </td>
+            <td>
+                <b>Costo Total ($)</b>
+            </td>
+            <td>
+                ${{ solicitud.inversion_total|floatformat }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Marca</b>
+            </td>
+            <td>
+                {{ solicitud.marca }}
+            </td>
+            <td>
+                <b>Aportacion del productor ($)</b>
+            </td>
+            <td>
+                ${{ solicitud.inversion_total|sub:solicitud.monto_autorizado|floatformat }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Marca</b>
+            </td>
+            <td>
+                {{ solicitud.modelo }}
+            </td>
+            <td>
+                <b>Aportacion federal recibida ($)</b>
+            </td>
+            <td>
+                ${{ solicitud.monto_autorizado|floatformat }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>HP</b>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <b>Depositado en la cuenta CLABE</b>
+            </td>
+            <td>
+                {{ user.perfil.clabe_interbancaria }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Numero de serie</b>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <b>Titular de la cuenta CLABE</b>
+            </td>
+            <td>
+                {{ user.perfil.nombre_cuentahabiente }}
+            </td>
+        </tr>
+    </table>
+</center>
+</br>
+</br>
+</br>
+</br>
+<center>
+    _____________________________________</br>
+    <b>{{ solicitud.nombre }}</b></br>
+    <b>Beneficiario del apoyo</b>
+</center>
+{% endblock %}

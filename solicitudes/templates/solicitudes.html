@@ -48,7 +48,7 @@ Buscar por:
                 <td>{{ form.fact }}</td>
                 <td>{{ form.carta_pago_terceros }}<a href="{% url 'solicitudes:ccdd' form.id.value %}">CCdD</a></td>
                 <td>{{ form.reporte_verif }}</td>
-                <td>{{ form.carta_entrega_recepcion }}</td>
+                <td>{{ form.carta_entrega_recepcion }}<a href="{% url 'solicitudes:centr' form.id.value %}">CER</a></td>
                 <!--<td>{{ form.oservaciones }}</td>-->
                 <td></td>
             </tr>
